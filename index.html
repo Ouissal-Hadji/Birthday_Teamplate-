@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Something Special...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/gate.css">
+    <link rel="stylesheet" href="css/cinematic.css">
+</head>
+
+<body class="gate-body">
+
+    <!-- ==================== GRAND CINEMATIC ENTRANCE OVERLAY (10s Story) ==================== -->
+    <div class="cinematic-overlay" id="cinematicOverlay">
+        <!-- 3-Segment Story Progress Bars -->
+        <div class="cinematic-story-bars">
+            <div class="story-bar-track" id="barTrack1"><div class="story-bar-fill" id="barFill1"></div></div>
+            <div class="story-bar-track" id="barTrack2"><div class="story-bar-fill" id="barFill2"></div></div>
+            <div class="story-bar-track" id="barTrack3"><div class="story-bar-fill" id="barFill3"></div></div>
+        </div>
+
+        <div class="cinematic-chapter-indicator" id="chapterIndicator">CHAPTER I / III · THE DEDICATION</div>
+
+        <div class="cinematic-aura-glow"></div>
+
+        <div class="cinematic-content">
+            <!-- Slide 1: The Universe Dedication -->
+            <div class="cinematic-slide active" id="slide1">
+                <div class="cinematic-crest">✨</div>
+                <p class="cinematic-tagline">✦ A CELEBRATION DEDICATED TO YOU ✦</p>
+                <h1 class="cinematic-title">A Queen Was Born</h1>
+                <p class="cinematic-desc">
+                    In a universe of billions, today is uniquely devoted to honoring your light, your strength, and your radiant spirit.
+                </p>
+            </div>
+
+            <!-- Slide 2: Royal Birthday Queen -->
+            <div class="cinematic-slide" id="slide2">
+                <div class="cinematic-crest">👑</div>
+                <p class="cinematic-tagline">✦ TODAY IS YOUR DAY ✦</p>
+                <h1 class="cinematic-title">Happy Birthday, <span class="config-name">Sarah</span></h1>
+                <p class="cinematic-desc">
+                    You bring unstoppable joy, warm smiles, and beauty to the world around you every single day.
+                </p>
+            </div>
+
+            <!-- Slide 3: Unveiling the Experience -->
+            <div class="cinematic-slide" id="slide3">
+                <div class="cinematic-crest">🎂</div>
+                <p class="cinematic-tagline">✦ UNWRAPPING YOUR GIFT ✦</p>
+                <h1 class="cinematic-title">Your Magical Story Begins</h1>
+                <p class="cinematic-desc">
+                    Get ready for sweet memories, secret love letters, heartfelt games, and golden celebration wishes.
+                </p>
+            </div>
+
+            <div class="cinematic-controls">
+                <button class="cinematic-enter-btn" id="cinematicEnterBtn">
+                    <span>Enter Experience</span>
+                    <span>✨</span>
+                </button>
+                <button class="cinematic-skip-btn" id="cinematicSkipBtn">
+                    <span>Skip Intro ➔</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-layers" aria-hidden="true">
+        <div class="bg-gradient"></div>
+        <div class="bg-stars"></div>
+        <div class="bg-dust">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <main class="gate-wrap">
+
+        <!-- COUNTDOWN VIEW -->
+        <div class="countdown-view" id="countdownView">
+
+            <div class="gate-hero">
+                <div class="gate-badge">
+                    <span>✦ SPECIAL CELEBRATION ✦</span>
+                </div>
+                <p class="gate-label">Something beautiful is coming for</p>
+                <h1 class="gate-name config-name">Sarah</h1>
+                <div class="gate-line" aria-hidden="true"></div>
+            </div>
+
+            <div class="timer-grid" id="timerGrid">
+                <div class="timer-card">
+                    <div class="timer-ring" aria-hidden="true"></div>
+                    <span class="timer-num" id="days">00</span>
+                    <span class="timer-label">Days</span>
+                </div>
+                <div class="timer-divider">:</div>
+                <div class="timer-card">
+                    <div class="timer-ring" aria-hidden="true"></div>
+                    <span class="timer-num" id="hours">00</span>
+                    <span class="timer-label">Hours</span>
+                </div>
+                <div class="timer-divider">:</div>
+                <div class="timer-card">
+                    <div class="timer-ring" aria-hidden="true"></div>
+                    <span class="timer-num" id="minutes">00</span>
+                    <span class="timer-label">Minutes</span>
+                </div>
+                <div class="timer-divider">:</div>
+                <div class="timer-card">
+                    <div class="timer-ring" aria-hidden="true"></div>
+                    <span class="timer-num" id="seconds">00</span>
+                    <span class="timer-label">Seconds</span>
+                </div>
+            </div>
+
+            <p class="gate-date-display config-date">August 25th, 2026</p>
+
+            <div class="early-access">
+                <a href="experience.html" class="early-btn">
+                    <span>Enter Experience</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- CELEBRATION VIEW (Auto-shown when timer reaches 0) -->
+        <div class="celebration-view" id="celebrationView" hidden>
+            <div class="celebration-glow" aria-hidden="true"></div>
+
+            <div class="celebration-content">
+                <p class="celebration-tag">It's your day, my love</p>
+                <h2 class="celebration-title">You are <span class="config-age">25</span> now</h2>
+                <div class="celebration-stars" aria-hidden="true">
+                    <span>&#10022;</span><span>&#10022;</span><span>&#10022;</span>
+                </div>
+                <p class="celebration-text">
+                    The world became a little brighter<br>
+                    the day you were born.
+                </p>
+                <a href="experience.html" class="celebration-btn">
+                    <span>Open Your Gift</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/petals.js"></script>
+    <script src="js/fireworks.js"></script>
+    <script src="js/cinematic.js"></script>
+    <script src="js/gate.js"></script>
+</body>
+
+</html>

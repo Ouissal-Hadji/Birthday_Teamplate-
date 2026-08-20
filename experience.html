@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/experience.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="css/cinematic.css">
+</head>
+
+<body class="experience-body">
+
+    <!-- ==================== GRAND CINEMATIC ENTRANCE OVERLAY (20-30s) ==================== -->
+    <div class="cinematic-overlay" id="cinematicOverlay">
+        <!-- 3-Segment Story Progress Bars (Communicates 3 Acts Naturally) -->
+        <div class="cinematic-story-bars">
+            <div class="story-bar-track" id="barTrack1"><div class="story-bar-fill" id="barFill1"></div></div>
+            <div class="story-bar-track" id="barTrack2"><div class="story-bar-fill" id="barFill2"></div></div>
+            <div class="story-bar-track" id="barTrack3"><div class="story-bar-fill" id="barFill3"></div></div>
+        </div>
+
+        <div class="cinematic-chapter-indicator" id="chapterIndicator">CHAPTER I / III · THE DEDICATION</div>
+
+        <div class="cinematic-aura-glow"></div>
+
+        <div class="cinematic-content">
+            <!-- Slide 1: The Universe Dedication (0s - 7s) -->
+            <div class="cinematic-slide active" id="slide1">
+                <div class="cinematic-crest">✨</div>
+                <p class="cinematic-tagline">✦ A CELEBRATION DEDICATED TO YOU ✦</p>
+                <h1 class="cinematic-title">A Queen Was Born</h1>
+                <p class="cinematic-desc">
+                    In a universe of billions, today is uniquely devoted to honoring your light, your strength, and your radiant spirit.
+                </p>
+            </div>
+
+            <!-- Slide 2: Royal Birthday Queen (7s - 14s) -->
+            <div class="cinematic-slide" id="slide2">
+                <div class="cinematic-crest">👑</div>
+                <p class="cinematic-tagline">✦ TODAY IS YOUR DAY ✦</p>
+                <h1 class="cinematic-title">Happy Birthday, <span class="config-name">Sarah</span></h1>
+                <p class="cinematic-desc">
+                    You bring unstoppable joy, warm smiles, and beauty to the world around you every single day.
+                </p>
+            </div>
+
+            <!-- Slide 3: Unveiling the Experience (14s - 22s) -->
+            <div class="cinematic-slide" id="slide3">
+                <div class="cinematic-crest">🎂</div>
+                <p class="cinematic-tagline">✦ UNWRAPPING YOUR GIFT ✦</p>
+                <h1 class="cinematic-title">Your Magical Story Begins</h1>
+                <p class="cinematic-desc">
+                    Get ready for sweet memories, secret love letters, heartfelt games, and golden celebration wishes.
+                </p>
+            </div>
+
+            <div class="cinematic-controls">
+                <button class="cinematic-enter-btn" id="cinematicEnterBtn">
+                    <span>Enter Experience</span>
+                    <span>✨</span>
+                </button>
+                <button class="cinematic-skip-btn" id="cinematicSkipBtn">
+                    <span>Skip Intro ➔</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="section-nav" aria-label="Page sections">
+        <a href="#hero" class="nav-dot active" data-section="hero"></a>
+        <a href="#story" class="nav-dot" data-section="story"></a>
+        <a href="#letter" class="nav-dot" data-section="letter"></a>
+        <a href="#game" class="nav-dot" data-section="game"></a>
+        <a href="#cake" class="nav-dot" data-section="cake"></a>
+        <a href="#closing" class="nav-dot" data-section="closing"></a>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="section hero" id="hero">
+        <div class="hero-aurora" aria-hidden="true">
+            <div class="aurora-blob a1"></div>
+            <div class="aurora-blob a2"></div>
+            <div class="aurora-blob a3"></div>
+        </div>
+        <div class="hero-vignette" aria-hidden="true"></div>
+
+        <!-- Floating Sparkles -->
+        <div class="hero-sparkles" aria-hidden="true">
+            <span class="h-sparkle s1">✦</span>
+            <span class="h-sparkle s2">✨</span>
+            <span class="h-sparkle s3">★</span>
+            <span class="h-sparkle s4">✦</span>
+            <span class="h-sparkle s5">✨</span>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge-wrap">
+                <span class="hero-badge">✦ ROYAL CELEBRATION ✦</span>
+            </div>
+
+            <p class="hero-overline">A Special Tribute For</p>
+
+            <h1 class="hero-title config-name">Sarah</h1>
+
+            <p class="hero-age">Turning <span class="config-age">Twenty-Five</span></p>
+
+            <div class="hero-portrait-stage">
+                <div class="hero-portrait" id="heroPortrait">
+                    <div class="portrait-ambient-glow" aria-hidden="true"></div>
+                    <div class="portrait-ring" aria-hidden="true"></div>
+                    <div class="portrait-glow" aria-hidden="true"></div>
+                    <div class="portrait-frame">
+                        <div class="portrait-corner p-tl"></div>
+                        <div class="portrait-corner p-tr"></div>
+                        <div class="portrait-corner p-bl"></div>
+                        <div class="portrait-corner p-br"></div>
+                        <div class="portrait-light-sweep"></div>
+                        <img src="assets/images/photos/hero.jpg" alt="Birthday girl" id="heroPhoto"
+                            onerror="this.style.display='none'; this.parentElement.classList.add('no-img');">
+                        <div class="portrait-fallback" style="display:none;">
+                            <span>👑</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portrait-crown-tag">
+                    <span class="crown-icon">👑</span>
+                    <span class="crown-text">Princess of the Day</span>
+                </div>
+            </div>
+
+            <div class="hero-meta">
+                <span class="meta-date config-date">August 25th, 2026</span>
+                <span class="meta-dot"></span>
+                <span class="meta-tag">The Best Day of the Year</span>
+            </div>
+
+            <!-- Scroll Indicator (Cleanly centered in middle of page without overlap) -->
+            <div class="scroll-indicator" id="scrollIndicator">
+                <span class="scroll-label">Scroll Down</span>
+                <div class="scroll-pill">
+                    <div class="scroll-dot"></div>
+                </div>
+                <svg class="scroll-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PHOTO STORY ==================== -->
+    <section class="section story" id="story">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Moments With You</h2>
+            <p class="section-subtitle">Some memories never fade — swipe or use arrows to explore</p>
+        </div>
+
+        <div class="gallery-wrapper">
+            <button class="gallery-nav gallery-prev" id="galleryPrev" aria-label="Previous photo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+
+            <div class="gallery" id="gallery">
+                <div class="gallery-track">
+                    <article class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="card-image"><img src="assets/images/photos/story-1.jpg" alt="Memory 1"
+                                    loading="lazy"></div>
+                            <div class="card-caption"><span class="caption-date">Summer 2023</span>
+                                <p class="caption-text">That spontaneous road trip</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="card-image"><img src="assets/images/photos/story-2.jpg" alt="Memory 2"
+                                    loading="lazy"></div>
+                            <div class="card-caption"><span class="caption-date">New Year's Eve</span>
+                                <p class="caption-text">Danced until sunrise</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="card-image"><img src="assets/images/photos/story-3.jpg" alt="Memory 3"
+                                    loading="lazy"></div>
+                            <div class="card-caption"><span class="caption-date">Coffee & Confessions</span>
+                                <p class="caption-text">Our weekly ritual</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="card-image"><img src="assets/images/photos/story-4.jpg" alt="Memory 4"
+                                    loading="lazy"></div>
+                            <div class="card-caption"><span class="caption-date">The Concert</span>
+                                <p class="caption-text">Singing our hearts out</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="card-image"><img src="assets/images/photos/story-5.jpg" alt="Memory 5"
+                                    loading="lazy"></div>
+                            <div class="card-caption"><span class="caption-date">Beach Day</span>
+                                <p class="caption-text">Sandy toes, sun-kissed</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-item">
+                        <div class="gallery-card">
+                            <div class="card-image"><img src="assets/images/photos/story-6.jpg" alt="Memory 6"
+                                    loading="lazy"></div>
+                            <div class="card-caption"><span class="caption-date">Random Tuesday</span>
+                                <p class="caption-text">Every day is special</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <button class="gallery-nav gallery-next" id="galleryNext" aria-label="Next photo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Lightbox Modal with Arrows -->
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close photo view">&#10005;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous full photo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+            <div class="lightbox-content">
+                <img src="" alt="" class="lightbox-image" id="lightboxImage">
+                <p class="lightbox-caption" id="lightboxCaption"></p>
+            </div>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next full photo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== LETTER SECTION ==================== -->
+    <section class="section letter-section" id="letter">
+        <div class="letter-ambient-glow" aria-hidden="true"></div>
+        <div class="letter-particles" id="letterParticles" aria-hidden="true"></div>
+
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">A Letter For You</h2>
+            <p class="section-subtitle">Break the seal to reveal what's inside</p>
+        </div>
+
+        <div class="letter-scene">
+            <div class="envelope-container" id="envelopeContainer">
+                <!-- 3D Envelope -->
+                <div class="envelope-3d" id="envelope3d">
+                    <!-- Outer glow & shadow -->
+                    <div class="env-shadow"></div>
+
+                    <!-- Back panel / interior lining -->
+                    <div class="env-back-plate">
+                        <div class="env-interior-pattern"></div>
+                    </div>
+
+                    <!-- Folded Letter inside -->
+                    <div class="letter-in-envelope" id="letterInEnvelope">
+                        <div class="letter-preview-peeking">
+                            <span class="letter-ribbon-tag">✦ For Sarah ✦</span>
+                        </div>
+                    </div>
+
+                    <!-- Flaps -->
+                    <div class="env-flap env-flap-left"></div>
+                    <div class="env-flap env-flap-right"></div>
+                    <div class="env-flap env-flap-bottom">
+                        <div class="pocket-crest">
+                            <span class="crest-icon">✦</span>
+                        </div>
+                    </div>
+
+                    <!-- Top Flap -->
+                    <div class="env-flap env-flap-top" id="envTopFlap"></div>
+
+                    <!-- Real Transparent Custom Gold Wax Seal Sticker (Completely visible over flaps) -->
+                    <div class="wax-seal-container" id="waxSealContainer">
+                        <div class="wax-seal-wrapper" id="waxSeal" title="Click to break seal and open letter">
+                            <img src="assets/images/decorations/wax-seal.png" class="wax-seal-sticker"
+                                alt="Royal Monogram Wax Seal">
+                            <span class="seal-glow-ring"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expanded Parchment Letter Card -->
+                <div class="parchment-letter-card" id="parchmentLetterCard" aria-hidden="true">
+                    <div class="parchment-frame">
+                        <div class="parchment-corner top-left"></div>
+                        <div class="parchment-corner top-right"></div>
+                        <div class="parchment-corner bottom-left"></div>
+                        <div class="parchment-corner bottom-right"></div>
+                        <div class="parchment-border-line"></div>
+
+                        <button class="parchment-close-btn" id="parchmentCloseBtn" aria-label="Put letter back">
+                            <span>&#10005;</span>
+                        </button>
+
+                        <div class="parchment-content">
+                            <div class="parchment-header">
+                                <div class="letter-crest-badge">
+                                    <span>✦ SPECIAL DEDICATION ✦</span>
+                                </div>
+                                <div class="parchment-date config-date">August 25th, 2026</div>
+                            </div>
+
+                            <h3 class="parchment-salutation">My Dearest <span class="config-name">Sarah</span>,</h3>
+
+                            <div class="parchment-body config-message">
+                                <p class="drop-cap-paragraph">There are people who come into your life and make you
+                                    believe in magic. You are that person for me.</p>
+                                <p>From the late-night talks to the silent understandings, from the uncontrollable
+                                    laughter to the shoulders we've cried on — every moment with you is a priceless
+                                    gift.</p>
+                                <p>On your special day, I want you to know that you are loved beyond measure. Your
+                                    kindness, your strength, your beautiful radiant soul — they bring light to everyone
+                                    around you.</p>
+                                <p>Here's to another year of unforgettable adventures, dreams coming true, and endless
+                                    cups of coffee together.</p>
+                            </div>
+
+                            <div class="parchment-footer">
+                                <p class="parchment-closing">With all my love and deepest affection,</p>
+                                <div class="parchment-signature-wrap">
+                                    <span class="parchment-sig config-sender">Your Best Friend</span>
+                                    <div class="signature-flourish"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-controls">
+                <button class="letter-action-btn" id="letterActionBtn">
+                    <span class="btn-sparkle">✦</span>
+                    <span class="btn-label" id="letterBtnLabel">Open Letter</span>
+                </button>
+                <p class="letter-status-hint" id="letterStatusHint">Tap the wax seal or button to open</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GAME ==================== -->
+    <section class="section game" id="game">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">A Little Game</h2>
+            <p class="section-subtitle">Find the matching wishes</p>
+        </div>
+
+        <div class="game-container">
+            <div class="game-board" id="gameBoard">
+                <div class="game-stats">
+                    <div class="stat"><span class="stat-label">Wishes</span><span class="stat-value" id="gameScore">0 /
+                            6</span></div>
+                    <div class="stat"><span class="stat-label">Time</span><span class="stat-value"
+                            id="gameTime">00:00</span></div>
+                </div>
+                <div class="game-grid" id="gameGrid"></div>
+                <div class="game-message" id="gameMessage">
+                    <p>Find all the matching pairs!</p>
+                </div>
+                <button class="game-start-btn" id="gameStartBtn">Start Game</button>
+            </div>
+
+            <div class="game-reward" id="gameReward" style="display: none;">
+                <div class="reward-content">
+                    <div class="reward-crown-badge">
+                        <span class="crown-icon">👑</span>
+                        <span>VICTORY PRIZE UNLOCKED</span>
+                    </div>
+
+                    <h3 class="reward-title">Smart as Always! ✨</h3>
+
+                    <p class="reward-lecture">
+                        You solved the memory challenge effortlessly! Your quick wit and sharp mind never fail to amaze me. 
+                        As your well-deserved prize, here is a special set of blessings and wishes dedicated to your wonderful year ahead:
+                    </p>
+
+                    <div class="wishes-carousel-container">
+                        <button class="wishes-nav-btn wishes-prev-btn" id="wishesPrevBtn" aria-label="Previous wish">❮</button>
+                        
+                        <div class="wishes-prize-list" id="wishesPrizeList">
+                            <div class="wish-prize-item" data-index="1">
+                                <div class="wish-3d-tag">WISH #1</div>
+                                <div class="wish-icon-3d">🌟</div>
+                                <div class="wish-info">
+                                    <span class="wish-heading">Boundless Joy & Laughter</span>
+                                    <p class="wish-desc">May your days overflow with heartwarming smiles and genuine happiness.</p>
+                                </div>
+                                <div class="wish-card-glint"></div>
+                            </div>
+
+                            <div class="wish-prize-item" data-index="2">
+                                <div class="wish-3d-tag">WISH #2</div>
+                                <div class="wish-icon-3d">🚀</div>
+                                <div class="wish-info">
+                                    <span class="wish-heading">Dreams Turned to Reality</span>
+                                    <p class="wish-desc">May every ambitious aspiration you reach for come true with ease and grace.</p>
+                                </div>
+                                <div class="wish-card-glint"></div>
+                            </div>
+
+                            <div class="wish-prize-item" data-index="3">
+                                <div class="wish-3d-tag">WISH #3</div>
+                                <div class="wish-icon-3d">💖</div>
+                                <div class="wish-info">
+                                    <span class="wish-heading">Radiant Love & Peace</span>
+                                    <p class="wish-desc">May you always be surrounded by deep appreciation, warmth, and peace of mind.</p>
+                                </div>
+                                <div class="wish-card-glint"></div>
+                            </div>
+
+                            <div class="wish-prize-item" data-index="4">
+                                <div class="wish-3d-tag">WISH #4</div>
+                                <div class="wish-icon-3d">✨</div>
+                                <div class="wish-info">
+                                    <span class="wish-heading">Unforgettable Adventures</span>
+                                    <p class="wish-desc">Here's to exciting journeys, memorable milestones, and priceless memories.</p>
+                                </div>
+                                <div class="wish-card-glint"></div>
+                            </div>
+
+                            <div class="wish-prize-item" data-index="5">
+                                <div class="wish-3d-tag">WISH #5</div>
+                                <div class="wish-icon-3d">☕</div>
+                                <div class="wish-info">
+                                    <span class="wish-heading">Endless Health & Comfort</span>
+                                    <p class="wish-desc">Cozy mornings, vibrant vitality, and all the sweetest blessings in life.</p>
+                                </div>
+                                <div class="wish-card-glint"></div>
+                            </div>
+                        </div>
+
+                        <button class="wishes-nav-btn wishes-next-btn" id="wishesNextBtn" aria-label="Next wish">❯</button>
+                    </div>
+
+                    <p class="wishes-scroll-hint">✦ Scroll or swipe right to explore all wishes ➔</p>
+
+                    <button class="reward-btn" id="rewardBtn">
+                        <span>Make a Wish on the Cake</span>
+                        <span class="btn-arrow">🎂 ➔</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CAKE SECTION ==================== -->
+    <section class="section cake-section" id="cake">
+        <!-- Ambient glowing aura & background decor -->
+        <div class="cake-ambient-glow" id="cakeAmbientGlow" aria-hidden="true"></div>
+        <div class="cake-confetti-canvas-wrap" id="cakeConfettiWrap" aria-hidden="true"></div>
+
+        <div class="floating-party" aria-hidden="true">
+            <span class="floater">🎈</span>
+            <span class="floater">💖</span>
+            <span class="floater">🎊</span>
+            <span class="floater">🎉</span>
+            <span class="floater">🎈</span>
+            <span class="floater">💖</span>
+            <span class="floater">🎊</span>
+            <span class="floater">🎉</span>
+            <span class="floater">🎈</span>
+            <span class="floater">💖</span>
+        </div>
+
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Make a Birthday Wish</h2>
+            <p class="section-subtitle" id="cakeSubtitle">Tap each candle to blow it out</p>
+        </div>
+
+        <div class="cake-scene">
+            <!-- 3D Gourmet Birthday Cake Centerpiece -->
+            <div class="cake-stage" id="cakeStage">
+                <!-- Dynamic ambient lighting cast by flames -->
+                <div class="cake-flame-illumination" id="cakeIllumination"></div>
+
+                <div class="cake-structure">
+                    <!-- Royal Gold Pedestal Stand -->
+                    <div class="cake-pedestal">
+                        <div class="pedestal-plate">
+                            <div class="plate-reflection"></div>
+                            <div class="plate-rim-gold"></div>
+                        </div>
+                        <div class="pedestal-stem"></div>
+                        <div class="pedestal-base"></div>
+                        <div class="pedestal-shadow"></div>
+                    </div>
+
+                    <!-- Tier 1: Bottom Grand Truffle Tier -->
+                    <div class="tier tier-1">
+                        <div class="tier-cylinder">
+                            <div class="tier-quilt-pattern"></div>
+                            <!-- Gold pearls on base rim -->
+                            <div class="tier-pearls">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <!-- Dripping Ganache Frosting -->
+                        <div class="ganache-drips">
+                            <div class="drip-drop d1"></div>
+                            <div class="drip-drop d2"></div>
+                            <div class="drip-drop d3"></div>
+                            <div class="drip-drop d4"></div>
+                            <div class="drip-drop d5"></div>
+                            <div class="drip-drop d6"></div>
+                        </div>
+                        <div class="tier-top-cap"></div>
+                    </div>
+
+                    <!-- Tier 2: Middle Rose Silk Tier -->
+                    <div class="tier tier-2">
+                        <div class="tier-cylinder">
+                            <div class="tier-gold-leaf gl-1"></div>
+                            <div class="tier-gold-leaf gl-2"></div>
+                            <div class="tier-piping-lace"></div>
+                        </div>
+                        <div class="tier-ribbon-gold"></div>
+                        <div class="tier-top-cap"></div>
+                    </div>
+
+                    <!-- Tier 3: Top Chantilly Crown Tier -->
+                    <div class="tier tier-3">
+                        <div class="tier-cylinder">
+                            <div class="tier-pearls top-pearls">
+                                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <!-- Crown decorations: Strawberries, Cream rosettes, Gold Macarons -->
+                        <div class="tier-toppings">
+                            <div class="topping strawberry st-1">🍓</div>
+                            <div class="topping rosette rs-1"></div>
+                            <div class="topping macaron mc-1"></div>
+                            <div class="topping strawberry st-2">🍓</div>
+                            <div class="topping rosette rs-2"></div>
+                            <div class="topping macaron mc-2"></div>
+                            <div class="topping rosette rs-3"></div>
+                        </div>
+                        <div class="tier-top-cap"></div>
+                    </div>
+
+                    <!-- 5 Golden Tapered Birthday Candles -->
+                    <div class="cake-candles-array" id="candlesArray">
+                        <div class="luxury-candle" data-index="0" title="Tap to blow out candle 1">
+                            <div class="flame-aura"></div>
+                            <div class="candle-flame">
+                                <div class="flame-core"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-smoke"></div>
+                            <div class="candle-wick"></div>
+                            <div class="candle-shaft shaft-1"></div>
+                        </div>
+                        <div class="luxury-candle" data-index="1" title="Tap to blow out candle 2">
+                            <div class="flame-aura"></div>
+                            <div class="candle-flame">
+                                <div class="flame-core"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-smoke"></div>
+                            <div class="candle-wick"></div>
+                            <div class="candle-shaft shaft-2"></div>
+                        </div>
+                        <div class="luxury-candle center-candle" data-index="2" title="Tap to blow out center candle">
+                            <div class="flame-aura"></div>
+                            <div class="candle-flame">
+                                <div class="flame-core"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-smoke"></div>
+                            <div class="candle-wick"></div>
+                            <div class="candle-shaft shaft-3"></div>
+                        </div>
+                        <div class="luxury-candle" data-index="3" title="Tap to blow out candle 4">
+                            <div class="flame-aura"></div>
+                            <div class="candle-flame">
+                                <div class="flame-core"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-smoke"></div>
+                            <div class="candle-wick"></div>
+                            <div class="candle-shaft shaft-4"></div>
+                        </div>
+                        <div class="luxury-candle" data-index="4" title="Tap to blow out candle 5">
+                            <div class="flame-aura"></div>
+                            <div class="candle-flame">
+                                <div class="flame-core"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-smoke"></div>
+                            <div class="candle-wick"></div>
+                            <div class="candle-shaft shaft-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Action Bar -->
+            <div class="cake-controls">
+                <div class="candles-progress-badge" id="candlesProgressBadge">
+                    <span class="flame-indicator-icon">🔥</span>
+                    <span class="candles-status-text" id="candlesStatusText">5 candles glowing — make a wish!</span>
+                </div>
+
+                <div class="cake-btn-row">
+                    <button class="blow-all-btn" id="blowAllBtn">
+                        <span class="blow-icon">💨</span>
+                        <span>Blow All With One Breath</span>
+                    </button>
+                    <button class="relight-btn" id="relightBtn" hidden>
+                        <span class="relight-icon">🕯️</span>
+                        <span>Relight Candles</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grand Finale Celebration Card -->
+            <div class="grand-celebration-card" id="cakeCelebration" hidden>
+                <div class="celebration-badge">✦ WISH GRANTED ✦</div>
+                <h3 class="celebration-title-grand">Happy Birthday</h3>
+                <p class="celebration-subtitle-grand">Princess <span class="config-name">Sarah</span> 🎂✨</p>
+                <p class="celebration-wish-quote">"May your year ahead be as extraordinary, radiant, and sweet as you
+                    are."</p>
+                <div class="celebration-emojis-row">✨ 💖 🥂 🌟 🎉</div>
+            </div>
+        </div>
+
+        <!-- Poppable Floating Balloons Overlay -->
+        <div class="balloon-field" id="balloonField">
+            <div class="pballoon red" style="left:8%;animation-duration:9s;"></div>
+            <div class="pballoon pink" style="left:25%;animation-duration:11s;animation-delay:1s;"></div>
+            <div class="pballoon gold" style="left:45%;animation-duration:10s;animation-delay:2s;"></div>
+            <div class="pballoon red" style="left:65%;animation-duration:12s;animation-delay:0.5s;"></div>
+            <div class="pballoon pink" style="left:82%;animation-duration:9s;animation-delay:3s;"></div>
+        </div>
+    </section>
+
+    <!-- ==================== CLOSING ==================== -->
+    <section class="section closing" id="closing">
+        <div class="closing-orb" aria-hidden="true"></div>
+        <div class="closing-content">
+            <div class="closing-cake">&#127874;</div>
+            <p class="closing-label">Happy Birthday</p>
+            <h2 class="closing-name config-name">Sarah</h2>
+            <p class="closing-wish">May this year bring you everything your heart desires.</p>
+            <div class="closing-line">
+                <span></span><span class="star">&#10022;</span><span></span>
+            </div>
+            <p class="closing-by">Made with love by <span class="config-sender">Your Best Friend</span></p>
+        </div>
+    </section>
+
+    <script src="js/utils.js"></script>
+    <script src="js/petals.js"></script>
+    <script src="js/fireworks.js"></script>
+    <script src="js/cinematic.js"></script>
+    <script src="js/experience.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>
