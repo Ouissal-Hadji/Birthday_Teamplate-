@@ -1,6 +1,6 @@
 /**
- * 🌸 Falling Flower Petals & Golden Blossoms Engine
- * Realistic 3D floating, fluttering rose petals & cherry blossoms
+ * 🌸 Delicate Falling Flower Petals Engine
+ * Soft, graceful, light rose petals & cherry blossoms
  */
 (function () {
     const canvas = document.createElement('canvas');
@@ -11,7 +11,8 @@
     canvas.style.width = '100vw';
     canvas.style.height = '100vh';
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '9998'; // Just behind/with fireworks
+    canvas.style.zIndex = '9998';
+    canvas.style.opacity = '0.8';
     document.body.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
@@ -37,20 +38,20 @@
 
         reset(isInitial = false) {
             this.x = Math.random() * width;
-            this.y = isInitial ? Math.random() * height : -30;
-            this.size = 12 + Math.random() * 16;
+            this.y = isInitial ? Math.random() * height : -25;
+            this.size = 10 + Math.random() * 14;
             this.type = PETAL_TYPES[Math.floor(Math.random() * PETAL_TYPES.length)];
-            this.speedY = 1.2 + Math.random() * 2.2;
-            this.speedX = (Math.random() - 0.5) * 1.5;
-            this.rotSpeed = (Math.random() - 0.5) * 0.04;
+            this.speedY = 1.0 + Math.random() * 1.8;
+            this.speedX = (Math.random() - 0.5) * 1.2;
+            this.rotSpeed = (Math.random() - 0.5) * 0.03;
             this.rotation = Math.random() * Math.PI * 2;
-            this.flipSpeed = 0.02 + Math.random() * 0.04;
+            this.flipSpeed = 0.02 + Math.random() * 0.03;
             this.flip = Math.random() * Math.PI;
-            this.swaySpeed = 0.015 + Math.random() * 0.025;
+            this.swaySpeed = 0.015 + Math.random() * 0.02;
             this.swayAngle = Math.random() * Math.PI * 2;
-            this.swayDistance = 25 + Math.random() * 35;
+            this.swayDistance = 20 + Math.random() * 30;
             this.baseX = this.x;
-            this.opacity = 0.75 + Math.random() * 0.25;
+            this.opacity = 0.65 + Math.random() * 0.25;
         }
 
         update() {
@@ -60,7 +61,7 @@
             this.rotation += this.rotSpeed;
             this.flip += this.flipSpeed;
 
-            if (this.y > height + 40 || this.x < -40 || this.x > width + 40) {
+            if (this.y > height + 30 || this.x < -30 || this.x > width + 30) {
                 this.reset(false);
             }
         }
@@ -69,7 +70,7 @@
             ctx.save();
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
-            ctx.scale(Math.cos(this.flip), 1); // 3D flip effect
+            ctx.scale(Math.cos(this.flip), 1);
 
             ctx.beginPath();
             ctx.moveTo(0, -this.size / 2);
@@ -83,14 +84,14 @@
             ctx.fillStyle = gradient;
             ctx.globalAlpha = this.opacity;
             ctx.shadowColor = this.type.shadow;
-            ctx.shadowBlur = 6;
+            ctx.shadowBlur = 4;
             ctx.fill();
             ctx.restore();
         }
     }
 
     const petals = [];
-    const PETAL_COUNT = 38;
+    const PETAL_COUNT = 22; // Lighter, delicate count
     for (let i = 0; i < PETAL_COUNT; i++) {
         petals.push(new Petal(true));
     }
@@ -107,5 +108,5 @@
     }
 
     requestAnimationFrame(loop);
-    console.log('🌸 Falling Petals Engine Loaded');
+    console.log('🌸 Light Falling Petals Engine Loaded');
 })();

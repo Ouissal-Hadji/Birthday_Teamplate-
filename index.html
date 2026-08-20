@@ -13,66 +13,9 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/gate.css">
-    <link rel="stylesheet" href="css/cinematic.css">
 </head>
 
 <body class="gate-body">
-
-    <!-- ==================== GRAND CINEMATIC ENTRANCE OVERLAY (10s Story) ==================== -->
-    <div class="cinematic-overlay" id="cinematicOverlay">
-        <!-- 3-Segment Story Progress Bars -->
-        <div class="cinematic-story-bars">
-            <div class="story-bar-track" id="barTrack1"><div class="story-bar-fill" id="barFill1"></div></div>
-            <div class="story-bar-track" id="barTrack2"><div class="story-bar-fill" id="barFill2"></div></div>
-            <div class="story-bar-track" id="barTrack3"><div class="story-bar-fill" id="barFill3"></div></div>
-        </div>
-
-        <div class="cinematic-chapter-indicator" id="chapterIndicator">CHAPTER I / III · THE DEDICATION</div>
-
-        <div class="cinematic-aura-glow"></div>
-
-        <div class="cinematic-content">
-            <!-- Slide 1: The Universe Dedication -->
-            <div class="cinematic-slide active" id="slide1">
-                <div class="cinematic-crest">✨</div>
-                <p class="cinematic-tagline">✦ A CELEBRATION DEDICATED TO YOU ✦</p>
-                <h1 class="cinematic-title">A Queen Was Born</h1>
-                <p class="cinematic-desc">
-                    In a universe of billions, today is uniquely devoted to honoring your light, your strength, and your radiant spirit.
-                </p>
-            </div>
-
-            <!-- Slide 2: Royal Birthday Queen -->
-            <div class="cinematic-slide" id="slide2">
-                <div class="cinematic-crest">👑</div>
-                <p class="cinematic-tagline">✦ TODAY IS YOUR DAY ✦</p>
-                <h1 class="cinematic-title">Happy Birthday, <span class="config-name">Sarah</span></h1>
-                <p class="cinematic-desc">
-                    You bring unstoppable joy, warm smiles, and beauty to the world around you every single day.
-                </p>
-            </div>
-
-            <!-- Slide 3: Unveiling the Experience -->
-            <div class="cinematic-slide" id="slide3">
-                <div class="cinematic-crest">🎂</div>
-                <p class="cinematic-tagline">✦ UNWRAPPING YOUR GIFT ✦</p>
-                <h1 class="cinematic-title">Your Magical Story Begins</h1>
-                <p class="cinematic-desc">
-                    Get ready for sweet memories, secret love letters, heartfelt games, and golden celebration wishes.
-                </p>
-            </div>
-
-            <div class="cinematic-controls">
-                <button class="cinematic-enter-btn" id="cinematicEnterBtn">
-                    <span>Enter Experience</span>
-                    <span>✨</span>
-                </button>
-                <button class="cinematic-skip-btn" id="cinematicSkipBtn">
-                    <span>Skip Intro ➔</span>
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Animated Background -->
     <div class="bg-layers" aria-hidden="true">
@@ -87,7 +30,7 @@
 
     <main class="gate-wrap">
 
-        <!-- COUNTDOWN VIEW -->
+        <!-- COUNTDOWN VIEW (Always first view) -->
         <div class="countdown-view" id="countdownView">
 
             <div class="gate-hero">
@@ -139,7 +82,7 @@
 
         </div>
 
-        <!-- CELEBRATION VIEW (Auto-shown when timer reaches 0) -->
+        <!-- CELEBRATION VIEW (Shown when countdown hits 0) -->
         <div class="celebration-view" id="celebrationView" hidden>
             <div class="celebration-glow" aria-hidden="true"></div>
 
@@ -168,7 +111,6 @@
     <script src="js/utils.js"></script>
     <script src="js/petals.js"></script>
     <script src="js/fireworks.js"></script>
-    <script src="js/cinematic.js"></script>
     <script src="js/gate.js"></script>
 </body>
 
