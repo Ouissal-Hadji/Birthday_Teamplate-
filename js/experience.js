@@ -87,6 +87,9 @@
         if (isEnvelopeOpen) return;
         isEnvelopeOpen = true;
 
+        // Sound effect
+        if (window.BirthdayAudioFX) window.BirthdayAudioFX.sealBreak();
+
         // Spawn seal crack sparkles
         if (waxSeal) {
             const rect = waxSeal.getBoundingClientRect();
@@ -151,6 +154,9 @@
         candle.classList.add('blown');
         blownCount++;
 
+        // Sound effect
+        if (window.BirthdayAudioFX) window.BirthdayAudioFX.blowCandle();
+
         // Spawn ember sparks
         const rect = candle.getBoundingClientRect();
         createSparks(rect.left + rect.width / 2, rect.top + 10, 10, ['#ff9900', '#ffd700', '#ffffff', '#ff3300']);
@@ -184,6 +190,12 @@
         if (cakeCelebration) {
             cakeCelebration.hidden = false;
             cakeCelebration.style.display = 'block';
+        }
+
+        // Sound effect & Celebration fireworks
+        if (window.BirthdayAudioFX) window.BirthdayAudioFX.celebrationChime();
+        if (typeof window.launchGrandFireworks === 'function') {
+            window.launchGrandFireworks(4);
         }
 
         // Launch celebratory confetti

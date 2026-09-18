@@ -440,9 +440,9 @@
 
 @keyframes dustFloat {
     0% { opacity: 0; transform: translateY(0) scale(0); }
-    15% { opacity: 0.5; }
-    85% { opacity: 0.5; }
-    100% { opacity: 0; transform: translateY(-100vh) scale(1.5); }
+    20% { opacity: 0.25; }
+    80% { opacity: 0.25; }
+    100% { opacity: 0; transform: translateY(-100vh) scale(1.2); }
 }
 
 @keyframes pulseGlow {

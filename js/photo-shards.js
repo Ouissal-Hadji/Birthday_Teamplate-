@@ -13,7 +13,7 @@
     canvas.style.height = '100vh';
     canvas.style.pointerEvents = 'none';
     canvas.style.zIndex = '0'; // Strictly in background behind items
-    canvas.style.opacity = '0.9';
+    canvas.style.opacity = '0.3';
     document.body.prepend(canvas);
 
     const ctx = canvas.getContext('2d');
@@ -107,20 +107,20 @@
 
         reset(isInitial = false) {
             this.x = Math.random() * width;
-            this.y = isInitial ? Math.random() * height : -80;
-            this.size = 38 + Math.random() * 26; // Clean visible piece
+            this.y = isInitial ? Math.random() * height : -60;
+            this.size = 20 + Math.random() * 14; // Subtle, gentle accent
             this.shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
-            this.speedY = 2.4 + Math.random() * 2.8; // Faster, energetic fall
-            this.speedX = (Math.random() - 0.5) * 2.0;
-            this.rotSpeed = (Math.random() - 0.5) * 0.05;
+            this.speedY = 0.6 + Math.random() * 0.7; // Slow, calm drift
+            this.speedX = (Math.random() - 0.5) * 0.8;
+            this.rotSpeed = (Math.random() - 0.5) * 0.015;
             this.rotation = Math.random() * Math.PI * 2;
-            this.flipSpeed = 0.03 + Math.random() * 0.04;
+            this.flipSpeed = 0.01 + Math.random() * 0.015;
             this.flip = Math.random() * Math.PI;
-            this.swaySpeed = 0.02 + Math.random() * 0.03;
+            this.swaySpeed = 0.01 + Math.random() * 0.015;
             this.swayAngle = Math.random() * Math.PI * 2;
-            this.swayDistance = 35 + Math.random() * 45; // Widely scattered
+            this.swayDistance = 15 + Math.random() * 20;
             this.baseX = this.x;
-            this.opacity = 0.7 + Math.random() * 0.28;
+            this.opacity = 0.35 + Math.random() * 0.2;
             this.imageIndex = Math.floor(Math.random() * PHOTO_SRCS.length);
         }
 
@@ -131,7 +131,7 @@
             this.rotation += this.rotSpeed;
             this.flip += this.flipSpeed;
 
-            if (this.y > height + 80 || this.x < -80 || this.x > width + 80) {
+            if (this.y > height + 60 || this.x < -60 || this.x > width + 60) {
                 this.reset(false);
             }
         }
@@ -148,9 +148,9 @@
             const s = this.size;
 
             ctx.globalAlpha = this.opacity;
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
-            ctx.shadowBlur = 10;
-            ctx.shadowOffsetY = 5;
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.15)';
+            ctx.shadowBlur = 4;
+            ctx.shadowOffsetY = 2;
 
             // Draw and clip based on shape
             ctx.save();
@@ -211,7 +211,7 @@
     }
 
     const pieces = [];
-    const PIECE_COUNT = 24; // Scattered count
+    const PIECE_COUNT = 6; // Minimal, delicate background accents
     for (let i = 0; i < PIECE_COUNT; i++) {
         pieces.push(new PhotoShards(true));
     }

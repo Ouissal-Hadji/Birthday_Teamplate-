@@ -50,11 +50,16 @@
         if (els.seconds) els.seconds.textContent = seconds.toString().padStart(2, '0');
     }
 
+    let hasCelebrated = false;
     function showCelebration() {
         if (els.countdownView) els.countdownView.style.display = 'none';
         if (els.celebrationView) {
             els.celebrationView.hidden = false;
             els.celebrationView.style.display = 'block';
+            if (!hasCelebrated && typeof window.launchGrandFireworks === 'function') {
+                hasCelebrated = true;
+                window.launchGrandFireworks(4);
+            }
         }
         clearInterval(timerInterval);
     }

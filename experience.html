@@ -77,12 +77,12 @@
     </div>
 
     <nav class="section-nav" aria-label="Page sections">
-        <a href="#hero" class="nav-dot active" data-section="hero"></a>
-        <a href="#story" class="nav-dot" data-section="story"></a>
-        <a href="#letter" class="nav-dot" data-section="letter"></a>
-        <a href="#game" class="nav-dot" data-section="game"></a>
-        <a href="#cake" class="nav-dot" data-section="cake"></a>
-        <a href="#closing" class="nav-dot" data-section="closing"></a>
+        <a href="#hero" class="nav-dot active" data-section="hero" data-tooltip="Welcome"></a>
+        <a href="#story" class="nav-dot" data-section="story" data-tooltip="Memories"></a>
+        <a href="#letter" class="nav-dot" data-section="letter" data-tooltip="Love Letter"></a>
+        <a href="#game" class="nav-dot" data-section="game" data-tooltip="Memory Game"></a>
+        <a href="#cake" class="nav-dot" data-section="cake" data-tooltip="Birthday Cake"></a>
+        <a href="#closing" class="nav-dot" data-section="closing" data-tooltip="Closing Wish"></a>
     </nav>
 
     <!-- ==================== HERO ==================== -->
@@ -685,10 +685,32 @@
         </div>
     </section>
 
+    <!-- ==================== LUXURY FLOATING MUSIC WIDGET ==================== -->
+    <div class="luxury-music-widget" id="musicWidget">
+        <button class="music-toggle-btn" id="audioToggle" aria-label="Toggle background birthday song" title="Play / Pause Birthday Song">
+            <div class="vinyl-disc" id="vinylDisc">
+                <div class="vinyl-groove"></div>
+                <div class="vinyl-center-dot"></div>
+            </div>
+            <div class="music-widget-text">
+                <span class="music-track-title">Birthday Melody</span>
+                <div class="music-wave-bars" id="soundWave" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="music-ctrl-icon">
+                <span class="audio-play">▶</span>
+                <span class="audio-pause" hidden>❚❚</span>
+            </div>
+        </button>
+        <div id="bgPlayerFrame" class="bg-player-hidden" aria-hidden="true"></div>
+    </div>
+
     <script src="js/utils.js"></script>
     <script src="js/photo-shards.js"></script>
     <script src="js/petals.js"></script>
     <script src="js/fireworks.js"></script>
+    <script src="js/audio.js"></script>
     <script src="js/cinematic.js"></script>
     <script src="js/experience.js"></script>
     <script src="js/gallery.js"></script>

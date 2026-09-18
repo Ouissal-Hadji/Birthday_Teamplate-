@@ -11,8 +11,8 @@
     canvas.style.width = '100vw';
     canvas.style.height = '100vh';
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '9998';
-    canvas.style.opacity = '0.8';
+    canvas.style.zIndex = '0';
+    canvas.style.opacity = '0.35';
     document.body.appendChild(canvas);
 
     const ctx = canvas.getContext('2d');
@@ -39,19 +39,19 @@
         reset(isInitial = false) {
             this.x = Math.random() * width;
             this.y = isInitial ? Math.random() * height : -25;
-            this.size = 10 + Math.random() * 14;
+            this.size = 8 + Math.random() * 8;
             this.type = PETAL_TYPES[Math.floor(Math.random() * PETAL_TYPES.length)];
-            this.speedY = 1.0 + Math.random() * 1.8;
-            this.speedX = (Math.random() - 0.5) * 1.2;
-            this.rotSpeed = (Math.random() - 0.5) * 0.03;
+            this.speedY = 0.5 + Math.random() * 0.6;
+            this.speedX = (Math.random() - 0.5) * 0.6;
+            this.rotSpeed = (Math.random() - 0.5) * 0.015;
             this.rotation = Math.random() * Math.PI * 2;
-            this.flipSpeed = 0.02 + Math.random() * 0.03;
+            this.flipSpeed = 0.01 + Math.random() * 0.02;
             this.flip = Math.random() * Math.PI;
-            this.swaySpeed = 0.015 + Math.random() * 0.02;
+            this.swaySpeed = 0.01 + Math.random() * 0.015;
             this.swayAngle = Math.random() * Math.PI * 2;
-            this.swayDistance = 20 + Math.random() * 30;
+            this.swayDistance = 15 + Math.random() * 15;
             this.baseX = this.x;
-            this.opacity = 0.65 + Math.random() * 0.25;
+            this.opacity = 0.4 + Math.random() * 0.2;
         }
 
         update() {
@@ -91,7 +91,7 @@
     }
 
     const petals = [];
-    const PETAL_COUNT = 22; // Lighter, delicate count
+    const PETAL_COUNT = 8; // Very subtle, gentle count
     for (let i = 0; i < PETAL_COUNT; i++) {
         petals.push(new Petal(true));
     }

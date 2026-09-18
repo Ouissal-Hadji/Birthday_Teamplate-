@@ -11,7 +11,8 @@
     canvas.style.width = '100vw';
     canvas.style.height = '100vh';
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '9999';
+    canvas.style.zIndex = '1';
+    canvas.style.opacity = '0.55';
     canvas.style.mixBlendMode = 'screen';
     document.body.appendChild(canvas);
 
@@ -28,11 +29,10 @@
     const rockets = [];
 
     const PALETTES = [
-        ['#ffd700', '#f5d061', '#fff8db', '#e6a122', '#ffffff', '#ffbe0b'], // Royal Gold & Amber
-        ['#ff758f', '#ff4d6d', '#ffd1dc', '#c9184a', '#ffffff', '#ff0054'], // Rose & Ruby Fire
-        ['#e0c878', '#c9a84c', '#ffea9f', '#ffb703', '#ffffff', '#fb5607'], // Champagne & Sunset
-        ['#b388eb', '#8093f1', '#72ddf7', '#ffd166', '#ffffff', '#06d6a0'], // Magical Aurora
-        ['#ffffff', '#fff3b0', '#e09f3e', '#ff5400', '#ffd60a']              // Celebration Mix
+        ['#ffd700', '#f5d061', '#fff8db', '#e6a122'], // Royal Gold & Amber
+        ['#ff758f', '#ff4d6d', '#ffd1dc', '#c9184a'], // Soft Rose
+        ['#e0c878', '#c9a84c', '#ffea9f', '#ffb703'], // Champagne
+        ['#b388eb', '#8093f1', '#72ddf7', '#ffd166']  // Aurora
     ];
 
     class FireworkParticle {
@@ -42,32 +42,30 @@
             this.color = color;
             this.isShimmer = isShimmer;
             const angle = Math.random() * Math.PI * 2;
-            const speed = isShimmer ? (1 + Math.random() * 2) : (2.2 + Math.random() * 4.5);
+            const speed = isShimmer ? (0.8 + Math.random() * 1.2) : (1.4 + Math.random() * 2.5);
             this.vx = Math.cos(angle) * speed;
             this.vy = Math.sin(angle) * speed;
-            this.radius = isShimmer ? (1 + Math.random() * 1.5) : (1.8 + Math.random() * 2.2);
-            this.alpha = 1;
-            this.decay = 0.012 + Math.random() * 0.016;
-            this.gravity = 0.055;
-            this.flicker = Math.random() * 0.35;
+            this.radius = isShimmer ? (0.8 + Math.random() * 0.8) : (1.2 + Math.random() * 1.2);
+            this.alpha = 0.85;
+            this.decay = 0.016 + Math.random() * 0.018;
+            this.gravity = 0.035;
         }
 
         update() {
             this.x += this.vx;
             this.y += this.vy;
             this.vy += this.gravity;
-            this.vx *= 0.975;
+            this.vx *= 0.98;
             this.alpha -= this.decay;
         }
 
         draw() {
             ctx.save();
-            const currentAlpha = Math.max(0, this.alpha - (Math.random() < 0.2 ? this.flicker : 0));
-            ctx.globalAlpha = currentAlpha;
+            ctx.globalAlpha = Math.max(0, this.alpha);
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
-            ctx.shadowBlur = 10;
+            ctx.shadowBlur = 4;
             ctx.shadowColor = this.color;
             ctx.fill();
             ctx.restore();
@@ -76,11 +74,11 @@
 
     class Rocket {
         constructor(targetX, targetY) {
-            this.x = targetX !== undefined ? targetX + (Math.random() * 50 - 25) : width * 0.1 + Math.random() * (width * 0.8);
+            this.x = targetX !== undefined ? targetX : width * 0.2 + Math.random() * (width * 0.6);
             this.y = height + 10;
-            this.targetY = targetY !== undefined ? targetY : height * 0.12 + Math.random() * (height * 0.45);
-            this.speed = 7.5 + Math.random() * 4;
-            this.angle = -Math.PI / 2 + (Math.random() * 0.28 - 0.14);
+            this.targetY = targetY !== undefined ? targetY : height * 0.2 + Math.random() * (height * 0.35);
+            this.speed = 6.0 + Math.random() * 2.5;
+            this.angle = -Math.PI / 2 + (Math.random() * 0.16 - 0.08);
             this.vx = Math.cos(this.angle) * this.speed;
             this.vy = Math.sin(this.angle) * this.speed;
             this.palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
@@ -91,10 +89,10 @@
         update() {
             this.x += this.vx;
             this.y += this.vy;
-            this.vy += 0.035;
+            this.vy += 0.025;
 
-            // Sparkle rocket trail
-            if (Math.random() < 0.7) {
+            // Subtle sparkle trail
+            if (Math.random() < 0.2) {
                 particles.push(new FireworkParticle(this.x, this.y, '#ffd700', true));
             }
 
@@ -105,7 +103,7 @@
         }
 
         explode() {
-            const count = 36 + Math.floor(Math.random() * 24);
+            const count = 12 + Math.floor(Math.random() * 6);
             for (let i = 0; i < count; i++) {
                 const col = this.palette[Math.floor(Math.random() * this.palette.length)];
                 particles.push(new FireworkParticle(this.x, this.y, col));
@@ -115,46 +113,34 @@
         draw() {
             ctx.save();
             ctx.beginPath();
-            ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, 1.8, 0, Math.PI * 2);
             ctx.fillStyle = '#fff';
-            ctx.shadowBlur = 10;
+            ctx.shadowBlur = 4;
             ctx.shadowColor = '#ffd700';
             ctx.fill();
             ctx.restore();
         }
     }
 
-    // Touch / click burst
-    window.addEventListener('pointerdown', (e) => {
-        const palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
-        const count = 35 + Math.floor(Math.random() * 20);
+    // Salvo (Subtle, celebratory occasional volley)
+    window.launchGrandFireworks = function (volleyCount = 4) {
+        const count = Math.min(volleyCount, 5);
         for (let i = 0; i < count; i++) {
-            const col = palette[Math.floor(Math.random() * palette.length)];
-            particles.push(new FireworkParticle(e.clientX, e.clientY, col));
-        }
-    });
-
-    // Salvo
-    window.launchGrandFireworks = function (volleyCount = 14) {
-        for (let i = 0; i < volleyCount; i++) {
             setTimeout(() => {
-                const rx = width * (0.15 + (i / volleyCount) * 0.7 + (Math.random() * 0.08 - 0.04));
-                const ry = height * (0.15 + Math.random() * 0.35);
+                const rx = width * (0.25 + (i / count) * 0.5 + (Math.random() * 0.06 - 0.03));
+                const ry = height * (0.2 + Math.random() * 0.25);
                 rockets.push(new Rocket(rx, ry));
-            }, i * 180);
+            }, i * 400);
         }
     };
 
-    let lastRocketTime = 0;
+    let lastRocketTime = Date.now();
     function loop(now) {
         ctx.clearRect(0, 0, width, height);
 
-        // Frequent lively bursts
-        if (now - lastRocketTime > 700 + Math.random() * 600) {
+        // Very rare, gentle ambient rocket (every 16-24s only) so it does not distract from reading
+        if (now - lastRocketTime > 18000 + Math.random() * 8000) {
             rockets.push(new Rocket());
-            if (Math.random() < 0.45) {
-                setTimeout(() => rockets.push(new Rocket()), 180);
-            }
             lastRocketTime = now;
         }
 
@@ -184,5 +170,5 @@
     }
 
     requestAnimationFrame(loop);
-    console.log('🎆 Vibrant Fireworks Engine Loaded');
+    console.log('✨ Subtle Fireworks Engine Loaded');
 })();

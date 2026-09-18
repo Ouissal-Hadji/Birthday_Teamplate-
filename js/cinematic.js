@@ -36,17 +36,14 @@
 
         overlay.classList.add('dismissed');
 
-        // Play audio if background music exists
-        const bgMusic = document.getElementById('bgMusic');
-        if (bgMusic) {
-            bgMusic.play().catch(() => {});
+        // Start birthday background music
+        if (typeof window.startBirthdayMusic === 'function') {
+            window.startBirthdayMusic();
         }
-        const musicToggle = document.getElementById('musicToggle');
-        if (musicToggle) musicToggle.classList.add('playing');
 
-        // Massive grand salvo of firecrackers upon entering
+        // Subtle celebratory sparkle upon entering
         if (typeof window.launchGrandFireworks === 'function') {
-            window.launchGrandFireworks(20);
+            window.launchGrandFireworks(3);
         }
 
         setTimeout(() => {
@@ -89,11 +86,6 @@
                 track.classList.remove('completed');
             }
         });
-
-        // Trigger celebratory fireworks volley on chapter change
-        if (typeof window.launchGrandFireworks === 'function') {
-            window.launchGrandFireworks(6);
-        }
     }
 
     function tick() {
@@ -147,7 +139,7 @@
                 if (entry.isIntersecting && !hasFiredClosingSalvo) {
                     hasFiredClosingSalvo = true;
                     if (typeof window.launchGrandFireworks === 'function') {
-                        window.launchGrandFireworks(24);
+                        window.launchGrandFireworks(4);
                     }
                 }
             });

@@ -164,18 +164,28 @@
             track.style.cursor = 'grab';
         });
 
-        // Touch events
+        // Touch swipe handling (Silky smooth, threshold-based)
+        let touchStartX = 0;
+        let touchStartY = 0;
+
         track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].pageX;
-            scrollLeft = currentIndex * calculatedItemWidth;
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
         }, { passive: true });
 
-        track.addEventListener('touchmove', (e) => {
-            const x = e.touches[0].pageX;
-            const walk = (startX - x);
-            const newOffset = scrollLeft + walk;
-            const newIndex = Math.round(newOffset / calculatedItemWidth);
-            goToSlide(newIndex);
+        track.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+                if (diffX > 0) {
+                    next();
+                } else {
+                    prev();
+                }
+            }
         }, { passive: true });
     }
 

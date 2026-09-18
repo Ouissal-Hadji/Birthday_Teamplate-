@@ -86,7 +86,15 @@
 
     // ========== GAMEPLAY ==========
     function handleCardClick(index) {
-        if (!gameActive || isLocked) return;
+        if (isLocked) return;
+
+        // Auto-start on first card tap if not active
+        if (!gameActive) {
+            gameActive = true;
+            startTimer();
+            if (gameStartBtn) gameStartBtn.textContent = 'Restart Game';
+            if (gameMessage) gameMessage.innerHTML = '<p>Match all the pairs to unlock your birthday prize!</p>';
+        }
 
         const card = cards[index];
         if (card.matched || flippedCards.includes(index)) return;
@@ -104,6 +112,7 @@
         const card = cards[index];
         card.element.classList.add('flipped');
         flippedCards.push(index);
+        if (window.BirthdayAudioFX) window.BirthdayAudioFX.cardFlip();
     }
 
     function unflipCard(index) {
@@ -119,6 +128,7 @@
 
         if (card1.emoji === card2.emoji) {
             // Match found!
+            if (window.BirthdayAudioFX) window.BirthdayAudioFX.cardMatch();
             setTimeout(() => {
                 card1.element.classList.add('matched');
                 card2.element.classList.add('matched');
@@ -132,7 +142,7 @@
                 if (matchedPairs === TOTAL_PAIRS) {
                     endGame();
                 }
-            }, 600);
+            }, 500);
         } else {
             // No match
             setTimeout(() => {
@@ -140,7 +150,7 @@
                 unflipCard(second);
                 flippedCards = [];
                 isLocked = false;
-            }, 1000);
+            }, 900);
         }
     }
 
@@ -182,6 +192,9 @@
             gameMessage.innerHTML = '<p style="color: var(--gold-light); font-weight: 600;">👑 Brilliant! Memory Puzzle Solved!</p>';
         }
 
+        if (window.BirthdayAudioFX) window.BirthdayAudioFX.celebrationChime();
+        if (typeof window.launchGrandFireworks === 'function') window.launchGrandFireworks(3);
+
         // Show reward after brief delay
         setTimeout(() => {
             if (gameBoard) gameBoard.style.display = 'none';
@@ -193,18 +206,18 @@
                 const rect = gameReward.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + 120;
-                for (let i = 0; i < 30; i++) {
+                for (let i = 0; i < 20; i++) {
                     const spark = document.createElement('div');
                     spark.className = 'pop-particle';
-                    const angle = (Math.PI * 2 * i) / 30;
-                    const distance = 40 + Math.random() * 60;
+                    const angle = (Math.PI * 2 * i) / 20;
+                    const distance = 35 + Math.random() * 45;
                     spark.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
                     spark.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
                     spark.style.left = centerX + 'px';
                     spark.style.top = centerY + 'px';
                     spark.style.background = ['#ffd700', '#f5d061', '#ff758f', '#ffffff'][i % 4];
-                    spark.style.width = '6px';
-                    spark.style.height = '6px';
+                    spark.style.width = '5px';
+                    spark.style.height = '5px';
                     spark.style.borderRadius = '50%';
                     document.body.appendChild(spark);
                     setTimeout(() => spark.remove(), 750);
@@ -241,5 +254,15 @@
         });
     }
 
-    console.log('🎮 Game Module Loaded');
+    // Initialize cards immediately so game board is ready and inviting
+    initGame();
+    // Keep game active until user clicks, but don't run timer yet
+    gameActive = false;
+    stopTimer();
+    secondsElapsed = 0;
+    updateTime();
+    if (gameStartBtn) gameStartBtn.textContent = 'Shuffle Cards';
+    if (gameMessage) gameMessage.innerHTML = '<p>Tap any card to start playing!</p>';
+
+    console.log('🎮 Game Module Loaded & Cards Ready');
 })();
